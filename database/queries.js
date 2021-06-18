@@ -68,7 +68,6 @@ export const updatebook = async(req, res) => {
         }
 
         res.send(`Updated player ${id} with the ${response}`)
-            // res.send(`Updated player ${id} with the title: ${title} and description ${description}`);
     } catch (error) {
         console.log(error)
     }
