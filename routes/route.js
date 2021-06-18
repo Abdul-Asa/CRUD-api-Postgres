@@ -1,18 +1,24 @@
 import express from "express";
-import { getUsers, addUsers, updateUser, deleteUser } from '../database/queries.js';
+import { getbooks, createbooks, updatebook, getbook, deletebook } from '../database/queries.js';
 
 const router = express.Router();
 
+router.get("/",(req,res)=>{
+    res.json("Welcome to CRUD API bookstore");
+})
+
 //create
-router.post('/users', addUsers);
+router.post('/books', createbooks);
 
 //read
-router.get('/users', getUsers);
+router.get('/books', getbooks);
+
+router.get('/books/:id',getbook);
 
 //update
-router.put('/users/:userid', updateUser);
+router.put('/books/:id', updatebook);
 
 //delete
-router.delete('/users/:userid', deleteUser);
+router.delete('/books/:id', deletebook);
 
 export default router;
