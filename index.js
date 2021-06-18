@@ -1,5 +1,8 @@
 import express from 'express';
 import cors from 'cors';
+import route from "./routes/route.js";
+import client from "./database/index.js";
+
 
 const app = express();
 const port = process.env.PORT || "3000";
@@ -11,6 +14,7 @@ app.use((req,res,next)=>{
     console.log(`${req.protocol}://${req.get('host')}${req.originalUrl}`);
     next();
 });
+client.connect();
 
 app.get("/",(req,res)=>{
     res.json({
@@ -19,7 +23,7 @@ app.get("/",(req,res)=>{
     });
 });
 
-// app.use("/home",require("./routes/route"));
+app.use("/bookstore",route);
 
 
 app.listen(port,()=>{
