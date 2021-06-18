@@ -12,19 +12,14 @@ const upload = multer();
 
 //middlewares
 app.use(cors());
-app.use(express.json());
-app.use(upload.array()); 
-app.use(bodyParser.json())
-app.use(
-  bodyParser.urlencoded({
-    extended: true,
-  })
-)
-
+app.use(upload.array()); //for form data
+app.use(bodyParser.json()); //for json
+app.use(bodyParser.urlencoded({extended: true})); //for form data
 app.use((req,res,next)=>{
     console.log(`${req.protocol}://${req.get('host')}${req.originalUrl}`);
     next();
-});
+}); //console log the full url
+
 client.connect();
 
 app.get("/",(req,res)=>{
